@@ -48,7 +48,7 @@ Progress Trail comes with a few features to make it easy to get started:
 
 **Please see the [Disclaimer](https://github.com/SFDC-Assets/ProgressTrail#disclaimer)** (below)
 
-1. **Install for all users from the AppExchange: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6g000007zKTC**
+1. **Install for all users from the AppExchange: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6g000007zKTH**
   
 2. **Create a new Progress Trail:**
         <ol>
