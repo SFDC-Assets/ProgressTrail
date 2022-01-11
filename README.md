@@ -10,7 +10,17 @@
 
 Progress Trail provides better status-based guidance and actions for end users on any record.
 
-The best way to describe it is to show how it compares to the standard Path component:
+This little component shows the familiar progress path for your record, sure. So why use it?
+
+- Guidance can be set to show rich text or an embedded Flow.
+- Mix and match rich text and flows from step-to-step in the path.
+- Display different guidance to internal and external users.
+
+You define a **Progress Trail** that you can use on an object. You select the object and picklist field to use.  Then, Salesforce auto-creates **Progress Trail Segments** for each active picklist value. Each segment can be configured to show different rich text or flows to internal and external users.
+
+Once the segments are configured, add the Progress Trail component to your Lightning record page layout. You provide the name of the trail you want to use and set any other configurable properties.
+
+The best way to describe Progress Trail is to show how it compares to the standard Path component:
 
 | Feature | PATH | PROGRESS TRAIL |
 | :--- | :---: | :---: | 
