@@ -53,7 +53,7 @@ Progress Trail comes with a few features to make it easy to get started:
 
 ### Component Properties
 
-When you add this component to a Flow screen, there are a few properties to configure:
+When you add this component to a Lightning record page, there are a few properties to configure:
 
 | Attribute     							| Description	|
 | :----------------------------------------- | :------------- |
