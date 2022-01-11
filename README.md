@@ -28,39 +28,11 @@ The best way to describe it is to show how it compares to the standard Path comp
 | Hide extraneous labels (current status and "Guidance for Success") that take up space | ❌ | ✅ |
 | Editable/configurable by non-system administrator (e.g. a business process owner / super user) | ❌ | ✅ |
 
-#### Objects
-
-The component uses two objects to store information about the Progress Trail you want to display on a record page:
-- **Progress_Trail__c** - this object stores info about the trail you want to use for a specific object and field:
-      <ul>
-        <li><em>Name</em>: the unique name of the trail (which you will need to reference in the component)</li>
-        <li><em>Related_Object_API_Name__c</em>: the name of the object the trail is for (e.g. Case or My_Custom_Object__c)</li>
-        <li><em>Field_API_Name__c</em>: the name of the picklist field you want to use to show all the values in the progress path (e.g. Status or My_Custom_Picklist__c).</li>
-      </ul>
-      
-- **Progress_Trail_Segment__c** - this object is a child to Progress_Trail__c and stores your configuration for each picklist field value used by a trail.  For settings that are audience-specific, there are separate fields that will be used for internal and external users:
-      <ul>
-        <li><em>Internal_Guidance_Active_Type__c</em>: ddd</li>
-        <li><em>Internal_Guidance_Text__c</em>: ddd</li>
-        <li><em>Internal_Guidance_Flow_API_Name__c</em>: ddd</li>
-        <li><em>Pass_RecordId_to_Internal_Flow_if_Active__c</em>: ddd</li>
-        <li><em>External_Guidance_Active_Type__c</em>: ddd</li>
-        <li><em>External_Guidance_Text__c</em>: ddd</li>
-        <li><em>External_Guidance_Flow_API_Name__c</em>: ddd</li>
-        <li><em>Pass_RecordId_to_External_Flow_if_Active__c</em>: ddd</li>
-        <li><em>Progress_Trail__c</em>: the parent Progress Trail this segment is related to</li>
-        <li><em>Name</em>: The name of your segment has to exactly match the picklist value, so I wouldn't edit these</li>
-        <li><em>ddd</em>: ddd</li>
-        <li><em>ddd</em>: ddd</li>
-      </ul>
-  
-#### Other Included Features
-
 Progress Trail comes with a few features to make it easy to get started:
-- A setup app, called Progress Trail Setup.
+- A setup app, called "Progress Trail Setup".
 - A flow for quickly creating a Progress Trail for any object and picklist field; it auto-creates child segment records based on the active values in your designated picklist.
 - An even simpler flow for quickly creating a trail for the Case object based on the Status field.
-- A user permission set, called Progress Trail Component Access.
+- A user permission set, called "Progress Trail Component Access".
 
 ## Install & Setup Instructions
 
@@ -89,6 +61,38 @@ When you add this component to a Flow screen, there are a few properties to conf
 | **Trail Audience** | Is this component being displayed to internal or external users? |
 | **Show Path** | Display the progress path? |
 | **Trail Expanded by Default** | Is the trail guidance displayed as expanded by default when the page loads? This setting doesn't matter if you don't show the path. |
+
+## Additional Documentation
+
+### Objects
+
+The component uses two objects to store information about the Progress Trail you want to display on a record page.
+
+#### Progress_Trail__c
+This object stores info about the trail you want to use for a specific object and field:
+
+| Field Name                        | Description     |
+| :-------------------------------- | :-------------- |
+| **Name**                          | Name of the trail. Must be unique so that it will be used whenever you reference it in the component properties. |
+| **Related_Object_API_Name__c**    | Name of the object the trail is for (e.g. Case or My_Custom_Object__c). |
+| **Field_API_Name__c**             | Name of the picklist field you want to use to show all the values in the progress path (e.g. Status or My_Custom_Picklist__c). |
+
+
+#### Progress_Trail_Segment__c
+This object is a child to Progress_Trail__c and stores your configuration for each picklist field value used by a trail.  For settings that are audience-specific, there are separate fields that will be used for internal and external users:
+
+| Field Name                                          | Description     |
+| :-------------------------------------------------- | :-------------- |
+| **External_Guidance_Active_Type__c**                | Do you wish for external users to see rich text guidance or a flow for this segment? Only the selected option will be displayed. |
+| **External_Guidance_Text__c**                       | Rich text that will be shown to external users (if selected as the active type). |
+| **External_Guidance_Flow_API_Name__c**              | API name of the Flow that will be shown to external users (if selected as the active type). |
+| **Internal_Guidance_Active_Type__c**                | Do you wish for internal users to see rich text guidance or a flow for this segment? Only the selected option will be displayed. |
+| **Internal_Guidance_Text__c**                       | Rich text that will be shown to internal users (if selected as the active type). |
+| **Internal_Guidance_Flow_API_Name__c**              | API name of the Flow that will be shown to internal users (if selected as the active type). |
+| **Name**                                            | Name of your segment has to exactly match the picklist value, so I wouldn't edit these. |
+| **Pass_RecordId_to_External_Flow_if_Active__c**     | If "Display Flow" is the active choice for external users, do you wish to pass the current record's Id to Flow as a flow input variable called 'recordId'? If this is checked but you don't have an input variable called recordId, the user will get a fow error message. |
+| **Pass_RecordId_to_Internal_Flow_if_Active__c**     | If "Display Flow" is the active choice for internal users, do you wish to pass the current record's Id to Flow as a flow input variable called 'recordId'? If this is checked but you don't have an input variable called recordId, the user will get a fow error message. |
+| **Progress_Trail__c**                               | Parent Progress Trail this segment is related to. |
 
 ## FAQ
 
