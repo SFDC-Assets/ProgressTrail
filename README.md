@@ -1,5 +1,7 @@
 <h1 align="center">Progress Trail</h1>
 
+<p align="center"><strong><em>...COMING SOON...</em></strong></p>
+
 <p align="center">This package includes an Aura component that displays a modified Path component on a record page.</p>
 
 <!-- Sections below are Optional -->
