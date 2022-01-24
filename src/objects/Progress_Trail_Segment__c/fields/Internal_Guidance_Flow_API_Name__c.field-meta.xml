@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Internal_Guidance_Flow_API_Name__c</fullName>
+    <description>Guidance displayed to internal users for this segment (used when flow is selected instead of rich text).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Guidance displayed to internal users for this segment (used when flow is selected instead of rich text).</inlineHelpText>
+    <label>Internal Guidance Flow API Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

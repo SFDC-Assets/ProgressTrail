@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>progresstrailicon</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Progress Trail Setup</label>
+    <navType>Standard</navType>
+    <tabs>Progress_Trail_Setup</tabs>
+    <tabs>Progress_Trail__c</tabs>
+    <tabs>Progress_Trail_Segment__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Progress_Trail_Setup_UtilityBar</utilityBar>
+</CustomApplication>

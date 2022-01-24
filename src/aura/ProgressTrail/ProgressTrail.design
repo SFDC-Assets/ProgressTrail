@@ -1,0 +1,6 @@
+<design:component label="Progress Trail">
+	<design:attribute name="TrailName" label="Trail Name" description="Name of the Progress Trail you want to use for this record page." />
+    <design:attribute name="TrailAudience" label="Trail Audience" description="Is this component being displayed to internal or external users?" datasource="Internal,External" default="Internal" />
+    <design:attribute name="TrailShowPath" label="Show Path" description="Display the progress path?" default="True" />
+    <design:attribute name="TrailExpand" label="Trail Expanded by Default" description="Is the trail guidance displayed as expanded by default when the page loads? This setting doesn't matter if you don't show the path." default="True" />
+</design:component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pass_RecordId_to_Internal_Flow_if_Active__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>When checked and the active internal guidance type is set to Flow, the current record&apos;s Id will be passed to the designated Flow as an input variable called recordId.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>When checked and the active internal guidance type is set to Flow, the current record&apos;s Id will be passed to the designated Flow as an input variable called recordId.</inlineHelpText>
+    <label>Pass RecordId to Internal Flow if Active</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

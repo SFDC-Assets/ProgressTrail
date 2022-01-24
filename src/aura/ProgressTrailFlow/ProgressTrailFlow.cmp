@@ -1,0 +1,30 @@
+<!--
+Name:			ProgressTrailFlow.cmp
+Author:			Mitch Lynch
+Created:		27 Dec 2021
+Last Updated:	5 Jan 2022
+
+Comments:
+	- Embedded in the ProgressTrail component only.
+	- This component, including any referenced resources including but not limited to components, Apex controllers, objects, fields, and static resources, was developed by Mitch Lynch for Salesforce.com.  Use only with permission.
+
+- 1/5/2022 (Mitch Lynch)	-	Added ability to selectively pass the recordId to the Flow as an input variable based on trailPassRecordIdToFlow;
+								Record page now refreshes when a flow finishes; this enables changes made by the flow to be seen, but also allows a flow to progress to the next path value automatically (if the flow updates the path value).
+- 12/27/2021 (Mitch Lynch)	-	Created initial component.
+-->
+
+<aura:component implements="force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    
+    <aura:attribute name="trailFlowName" type="String" access="global"/>
+    <aura:attribute name="trailPassRecordIdToFlow" type="Boolean" access="global"/>
+    
+    <lightning:flow aura:id="trailFlow" onstatuschange="{!c.refreshPage}" />
+    
+    <!-- Resources:
+		https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/components_composition.htm
+		https://developer.salesforce.com/docs/atlas.en-us.204.0.lightning.meta/lightning/qs_aotp_app_step4_nested.htm
+		https://developer.salesforce.com/docs/component-library/bundle/lightning:flow/documentation
+	-->
+    
+</aura:component>

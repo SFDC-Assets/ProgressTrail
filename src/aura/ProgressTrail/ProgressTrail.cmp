@@ -1,0 +1,118 @@
+<!--
+Name:			ProgressTrail.cmp
+Author:			Mitch Lynch, Salesforce (mitch.lynch@salesforce.com)
+Created:		27 Dec 2021
+Last Updated:	11 Jan 2022
+
+Comments:
+	- Use on a record detail page.
+	- Component queries the current case record's Status field and displays a progress path
+	- that has a collapsible Guidance for Success section
+	- this section can contain rich text OR a flow
+	- Includes embedded Aura component called ProgressTrailFlow.
+	- This component, including any referenced resources including but not limited to components, Apex controllers, objects, fields, and static resources, was developed by Mitch Lynch for Salesforce.com.  Use only with permission.
+
+- 01/11/2022 (Mitch Lynch)	-	Minor formatting and logic tweaks as package is tested in another org;
+								Logic tweak to avoid doInit error when TrailName is blank (when first dropped onto the page);
+								Logic tweak to avoid doInit error when TrailName doesn't return a result.
+- 01/10/2022 (Mitch Lynch)	-	Final adjustments as controller is modified to write test coverage; testing package in another org.
+- 01/05/2022 (Mitch Lynch)	-	Added support for selectively passing the recordId to the Flow as an input variable based on trailPassRecordIdToFlow.
+- 01/03/2022 (Mitch Lynch)	-	Adding TrailShowPath property and functionality;
+								Adding SVG icon for component
+- 12/30/2021 (Mitch Lynch)  -	Finishing up initial build.
+- 12/27/2021 (Mitch Lynch)	-	Created initial component.
+-->
+
+<aura:component controller="ProgressTrailCtrl" implements="force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- User-provided properties -->
+    <aura:attribute name="TrailName" type="String" access="global" />
+    <aura:attribute name="TrailAudience" type="String" access="global" />
+    
+    <!-- Set by doInit and user action -->
+    <aura:attribute name="TrailStatusField" type="String" access="global" />
+    <aura:attribute name="CurrentRecordStatus" type="String" access="global" />
+    <aura:attribute name="TrailSegmentRecord" type="Progress_Trail_Segment__c" />
+    <aura:attribute name="TrailShowPath" type="Boolean" access="global" />
+    <aura:attribute name="TrailExpand" type="Boolean" access="global" />
+    
+    <!-- reloads the component if the record is edited -->
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    
+    <!-- ***************************************************     Main Component    ***************************************************     -->
+            
+    <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            
+            <!-- Picklist field to use for the progress path -->
+            <aura:renderIf isTrue="{!and(v.TrailShowPath == true,v.TrailStatusField != null)}">
+                <lightning:layout verticalAlign="center">
+                    <aura:renderIf isTrue="{!v.TrailSegmentRecord.length > 0}">
+                        <lightning:layoutitem>
+                            <div onclick="{!c.toggleTrailGuidance}">
+                                <label class="slds-checkbox-button" for="example-unique-id-182">
+                                    <input type="checkbox" class="slds-assistive-text" id="example-unique-id-182" value="example-unique-id-182" />
+                                    <div class="slds-icon_container" onclick="{!c.toggleTrailGuidance}">
+                                        <lightning:icon iconName="{! v.TrailExpand ? 'utility:chevrondown' : 'utility:chevronright' }" size="x-small" alternativeText="Contact" title="Contact"/>
+                                    </div>
+                                </label>
+                            </div>
+                        </lightning:layoutitem>
+                    </aura:renderIf>
+                    <lightning:layoutitem flexibility="auto">
+                        <lightning:picklistPath aura:id="picklistPath"
+                                                recordId="{!v.recordId}"
+                                                variant="linear"
+                                                picklistFieldApiName="{!v.TrailStatusField}"
+                                                onselect="{!c.handleSelect}">
+                        </lightning:picklistPath>
+                    </lightning:layoutitem>
+                </lightning:layout>
+            </aura:renderIf>
+            
+            <aura:renderIf isTrue="{!v.TrailSegmentRecord.length > 0}">
+                
+                <aura:renderIf isTrue="{!v.TrailExpand}">
+                    <aura:iteration items="{!v.TrailSegmentRecord}" var="activeseg">
+                        
+                        <!-- INTERNAL audience -->
+                        <aura:renderIf isTrue="{!v.TrailAudience == 'Internal'}">
+                            
+                            <!-- RICH TEXT -->
+                            <aura:renderIf isTrue="{!activeseg.Internal_Guidance_Active_Type__c == 'Display Rich Text'}">
+                                <lightning:formattedRichText value="{!activeseg.Internal_Guidance_Text__c}" />
+                            </aura:renderIf>
+                            
+                            <!-- FLOW -->
+                            <aura:renderIf isTrue="{!activeseg.Internal_Guidance_Active_Type__c == 'Display Flow'}">
+                                <c:ProgressTrailFlow trailFlowName="{!activeseg.Internal_Guidance_Flow_API_Name__c}" trailPassRecordIdToFlow="{!activeseg.Pass_RecordId_to_Internal_Flow_if_Active__c}" recordId="{!v.recordId}" />
+                            </aura:renderIf>
+                            
+                        </aura:renderIf>
+                        
+                        <!-- EXTERNAL audience -->
+                        <aura:renderIf isTrue="{!v.TrailAudience == 'External'}">
+                            
+                            <!-- RICH TEXT -->
+                            <aura:renderIf isTrue="{!activeseg.External_Guidance_Active_Type__c == 'Display Rich Text'}">
+                                <lightning:formattedRichText value="{!activeseg.External_Guidance_Text__c}" />
+                            </aura:renderIf>
+                            
+                            <!-- FLOW -->
+                            <aura:renderIf isTrue="{!activeseg.External_Guidance_Active_Type__c == 'Display Flow'}">
+                                <c:ProgressTrailFlow trailFlowName="{!activeseg.External_Guidance_Flow_API_Name__c}" trailPassRecordIdToFlow="{!activeseg.Pass_RecordId_to_External_Flow_if_Active__c}" recordId="{!v.recordId}" />
+                            </aura:renderIf>
+                            
+                        </aura:renderIf>
+                        
+                    </aura:iteration>
+                </aura:renderIf>
+            </aura:renderIf>
+            
+        </div>
+    </article>
+    
+    
+</aura:component>

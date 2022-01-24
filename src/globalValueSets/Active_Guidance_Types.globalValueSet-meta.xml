@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Display Rich Text</fullName>
+        <default>false</default>
+        <label>Display Rich Text</label>
+    </customValue>
+    <customValue>
+        <fullName>Display Flow</fullName>
+        <default>false</default>
+        <label>Display Flow</label>
+    </customValue>
+    <masterLabel>Active Guidance Types</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
