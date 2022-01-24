@@ -2,7 +2,7 @@
 
 <p align="center"><strong><em>...COMING SOON...</em></strong></p>
 
-<p align="center">This package includes an Aura component that displays a modified Path component on a record page.</p>
+<p align="center">This package includes an Aura component that displays a modified Path component on a record page. It also includes a Flow-based wizard for setting it up.</p>
 
 <!-- Sections below are Optional -->
 
