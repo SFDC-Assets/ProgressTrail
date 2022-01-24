@@ -1,7 +1,5 @@
 <h1 align="center">Progress Trail</h1>
 
-<p align="center"><strong><em>...COMING SOON...</em></strong></p>
-
 <p align="center">This package includes an Aura component that displays a modified Path component on a record page. It also includes a Flow-based wizards for setting them up.</p>
 
 <!-- Sections below are Optional -->
@@ -52,7 +50,7 @@ Progress Trail comes with a few features to make it easy to get started:
 
 **Please see the [Disclaimer](https://github.com/SFDC-Assets/ProgressTrail#disclaimer)** (below)
 
-1. **Install for all users from the AppExchange: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6g000007zKTH**
+1. **Install for all users from the AppExchange: https://login.salesforce.com/packaging/installPackage.apexp?p0=04t6g000007zKZG**
   
 2. **Create a new Progress Trail:**
         <ol>
@@ -113,6 +111,8 @@ This object is a child to Progress_Trail__c and stores your configuration for ea
 *None at present*
 
 ## Release History
+
+1.7 Initial release (24 Jan 2022), in honor of Claudius who, on this day in 41 AD, was declared emperor after being the last man standing in the wake of Caligula's assassination.
 
 1.4 Beta release (11 Jan 2022)
 
