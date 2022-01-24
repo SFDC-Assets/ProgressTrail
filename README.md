@@ -8,9 +8,7 @@
 
 ## Description
 
-Progress Trail provides better status-based guidance and actions for end users on any record.
-
-This little component shows the familiar progress path for your record, sure. So why use it?
+Progress Trail provides better status-based guidance and actions for end users on any record.  This is extremely helpful in use cases where it's important to provide step-by-step instructions to your agents, while providing customers with a high-level explanation of the status of their record.
 
 - Guidance can be set to show rich text or an embedded Flow.
 - Mix and match rich text and flows from step-to-step in the path.
